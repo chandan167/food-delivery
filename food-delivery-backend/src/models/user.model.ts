@@ -8,7 +8,7 @@ export interface User extends Document{
     phone: string|null;
     avatar: string|null
     password: string;
-    roleId: Schema.Types.ObjectId;
+    role: Schema.Types.ObjectId;
     permissions: Array<string>;
     createdAt: Date;
     updatedAt: Date
@@ -20,7 +20,7 @@ const userSchema = new Schema<User>({
 	phone: {type: String, default: null},
 	avatar: {type: String, default: null},
 	password: {type: String, required: true},
-	roleId : {type: Schema.Types.ObjectId, ref: RoleModel.name, required: true, default: null},
+	role : {type: Schema.Types.ObjectId, ref: 'Role', default: null},
 	permissions: [{type: String, required: true, default: null, lowercase: true, trim: true}]
 }, {
 	timestamps: true,
@@ -33,5 +33,8 @@ const userSchema = new Schema<User>({
 	}
 });
 
+
 export const UserModel = model<User>('User', userSchema);
+
+
 export type UserM = Model<User>;

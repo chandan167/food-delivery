@@ -10,6 +10,9 @@ export class RoleRepoImp implements RoleRepo{
 	constructor(
         @inject(ServiceIdentifier.RoleModel) private roleModel: RoleM
 	){}
+	async findAll(): Promise<Role[]> {
+		return await this.roleModel.find();
+	}
 	async create(role: Role): Promise<Role> {
 		const roleExist = await this.roleModel.findOne({name: role.name});
 		if(roleExist) throw new Conflict('role is already exist');

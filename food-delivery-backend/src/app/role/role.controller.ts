@@ -5,6 +5,8 @@ import { ServiceIdentifier } from '../../config/service-identifier';
 import { RoleService } from './role.service';
 import { Role } from '../../models/role.model';
 import { StatusCodes } from 'http-status-codes';
+import { HttpRequest, validation } from '../../decorator/validation';
+import { CreateRoleDto } from './dto/CreateRoleDto';
 
 
 @controller('/role')
@@ -15,7 +17,7 @@ export class RoleController extends BaseHttpController{
 	){
 		super();
 	}
-    @httpPost('/')
+    @httpPost('/', validation(CreateRoleDto, HttpRequest.Body))
 	async createRole(){
 		const body = this.httpContext.request.body as Role;
 		const role = await this.roleService.create(body);
@@ -31,8 +33,9 @@ export class RoleController extends BaseHttpController{
     }
 
     @httpGet('/')
-    getRoles(){
-
+    async getRoles(){
+    	const roles = await this.roleService.findAll();
+    	return this.httpContext.response.json({roles});
     }
 
     @httpDelete('/:id')

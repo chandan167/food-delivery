@@ -19,8 +19,9 @@ export class UserController extends BaseHttpController{
 
     @httpPost('/', validation(CreateUserDto, HttpRequest.Body))
 	async createHandler(){
-		const body = this.httpContext.request.body as User;
-		const user = await this.userService.create(body);
+		const {roleId, ...rest} = this.httpContext.request.body as CreateUserDto ;
+
+		const user = await this.userService.create({...rest, role:roleId} as any);
 		return this.httpContext.response.status(StatusCodes.CREATED).json({user});
 	}
 

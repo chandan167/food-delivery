@@ -15,4 +15,7 @@ export class CreateUserDto{
 
     @IsNotEmpty()
     	password!: string;
+
+    @IsNotEmpty()
+    	roleId!: string;
 }
