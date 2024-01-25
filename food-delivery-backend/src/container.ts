@@ -4,4 +4,4 @@ import { ServiceIdentifier } from './config/service-identifier';
 
 export const container = new Container();
 
-container.bind<EnvType>(ServiceIdentifier.EnvType).toConstantValue(environment)
+container.bind<EnvType>(ServiceIdentifier.EnvType).toConstantValue(environment);

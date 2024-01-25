@@ -1,3 +1,3 @@
 export const ServiceIdentifier  = {
-    EnvType : Symbol.for("EnvType")
-}
+	EnvType : Symbol.for('EnvType')
+};
