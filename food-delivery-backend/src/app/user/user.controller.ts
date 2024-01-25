@@ -4,7 +4,6 @@ import { UserService } from './user.service';
 import { inject } from 'inversify';
 import { ServiceIdentifier } from '../../config/service-identifier';
 import { StatusCodes } from 'http-status-codes';
-import { User } from '../../models/user.model';
 import { HttpRequest, validation } from '../../decorator/validation';
 import { CreateUserDto } from './dto/CreateUserDto';
 
