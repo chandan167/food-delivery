@@ -1,8 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "food-delivery-backend"
+			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.words": [
+			"Chandan",
+			"inversify"
+		]
+	}
 }
